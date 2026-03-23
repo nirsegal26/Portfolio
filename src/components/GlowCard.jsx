@@ -2,32 +2,25 @@ import { useRef } from "react";
 
 const GlowCard = ({ children }) => {
   const cardRef = useRef(null);
-  let rafId = null; 
 
   const handleMouseMove = (e) => {
     if (!cardRef.current) return;
+    
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
 
-    if (rafId) cancelAnimationFrame(rafId);
-
-    rafId = requestAnimationFrame(() => {
-      const rect = cardRef.current.getBoundingClientRect();
-      const mouseX = e.clientX - rect.left - rect.width / 2;
-      const mouseY = e.clientY - rect.top - rect.height / 2;
-
-      let angle = Math.atan2(mouseY, mouseX) * (180 / Math.PI);
-      angle = (angle + 360) % 360;
-
-      cardRef.current.style.setProperty("--start", angle + 60);
-    });
+    cardRef.current.style.setProperty("--mouse-x", `${x}px`);
+    cardRef.current.style.setProperty("--mouse-y", `${y}px`);
   };
 
   return (
     <div
       ref={cardRef}
       onMouseMove={handleMouseMove}
-      className="card card-border timeline-card rounded-xl p-5 md:p-10 mb-5 relative overflow-hidden will-change-transform"
+      className="card card-border timeline-card rounded-xl p-5 md:p-10 mb-5 relative overflow-hidden group will-change-transform"
     >
-      <div className="glow"></div>
+      <div className="glow-overlay opacity-0 group-hover:opacity-100" />
       
       <div className="relative z-10 w-full h-full">
         {children}

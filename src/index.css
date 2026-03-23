@@ -450,50 +450,23 @@ section {
 /* marquee end */
 
 .card {
-  --start: 0;
   position: relative;
-  z-index: 40;
+  z-index: 1;
+  background: #0e0e10; /* color-black-100 */
   overflow: hidden;
-  transition: border-color 1s ease-in-out;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: border-color 0.5s ease;
 }
 
-.card::before {
+.glow-overlay {
   position: absolute;
-  content: "";
-  width: 100%;
-  height: 100%;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 12px;
-  border: 2px solid transparent;
-  background: var(--gradient);
-  background-attachment: fixed;
-  mask: linear-gradient(#0000, #0000),
-    conic-gradient(
-      from calc((var(--start) - 15) * 1deg),
-      #ffffff1f 0deg,
-      white,
-      #ffffff00 100deg
-    );
-  mask-composite: intersect;
-  mask-clip: padding-box, border-box;
-  opacity: 0;
-  transition: 0.5s ease;
-}
-
-.glow {
+  inset: 0;
+  z-index: 0;
   pointer-events: none;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  filter: blur(10px);
-  filter: saturate(200);
-}
-
-.card:hover::before {
-  opacity: 1;
+  background: radial-gradient(
+    600px circle at var(--mouse-x) var(--mouse-y),
+    rgba(217, 236, 255, 0.1),
+    transparent 40%
+  );
+  transition: opacity 0.5s ease;
 }

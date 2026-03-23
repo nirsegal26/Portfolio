@@ -62,7 +62,7 @@ const expCards = [
     second_title: "Automated Quiz Generation & Progress Tracking Platform",
     imgPath: "/images/quizit.png",
     gifPath: "/images/quizit.gif",
-    githubLink: "https://github.com/nirsegal26/quiz-it",
+    githubLink: "https://github.com/nirsegal26/quizit",
     logoPath: "/images/logo2.png",
     title: "QuizIt App",
     responsibilities: [
