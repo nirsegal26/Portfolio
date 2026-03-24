@@ -1,10 +1,23 @@
 const navLinks = [
-  { name: "Work", link: "#counter" },
-  { name: "Projects", link: "#experience" },
-  { name: "Skills", link: "#skills" },
+  {
+    name: "Work",
+    link: "#counter",
+  },
+  {
+    name: "Projects",
+    link: "#experience",
+  },
+  {
+    name: "Skills",
+    link: "#skills",
+  },
 ];
 
 const words = [
+  { text: "Learning", imgPath: "/images/ideas.svg" },
+  { text: "Designing", imgPath: "/images/pb.png" },
+  { text: "Building", imgPath: "/images/designs.svg" },
+  { text: "Coding", imgPath: "/images/code.svg" },
   { text: "Learning", imgPath: "/images/ideas.svg" },
   { text: "Designing", imgPath: "/images/pb.png" },
   { text: "Building", imgPath: "/images/designs.svg" },
@@ -49,7 +62,7 @@ const expCards = [
     second_title: "Automated Quiz Generation & Progress Tracking Platform",
     imgPath: "/images/quizit.png",
     gifPath: "/images/quizit.gif",
-    githubLink: "https://github.com/nirsegal26/quizit",
+    githubLink: "https://github.com/nirsegal26/quiz-it",
     logoPath: "/images/logo2.png",
     title: "QuizIt App",
     responsibilities: [
