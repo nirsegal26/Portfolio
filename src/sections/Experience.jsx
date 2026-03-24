@@ -10,39 +10,41 @@ import ProjectImage from "../components/ProjectImage";
 
 gsap.registerPlugin(ScrollTrigger);
 
+ScrollTrigger.config({ limitCallbacks: true });
+
 const Experience = () => {
   const containerRef = useRef(null);
 
   useGSAP(() => {
-    // 1. Cards Animation
-    gsap.utils.toArray(".exp-card-wrapper").forEach((card) => {
-      gsap.from(card, {
-        y: 50, 
-        opacity: 0,
-        duration: 0.8,
-        ease: "power2.out",
-        force3D: true, 
+    const cards = containerRef.current.querySelectorAll(".exp-card-wrapper");
+
+    cards.forEach((card, index) => {
+      const tl = gsap.timeline({
         scrollTrigger: {
           trigger: card,
-          start: "top 85%",
-        },
+          start: "top 85%", 
+          once: true, 
+        }
       });
-    });   
 
-    // 2. Text Animation
-    gsap.utils.toArray(".expText").forEach((text) => {
-      gsap.from(text, {
-        x: 30, 
-        opacity: 0,
-        duration: 0.8,
-        ease: "power2.out",
-        force3D: true,
-        scrollTrigger: {
-          trigger: text,
-          start: "top 80%",
-        },
-      });
+      tl.fromTo(
+        [
+          card.querySelector(".card-border"), 
+          card.querySelector(".exp-card-logo"), 
+          card.querySelector(".exp-card-title"), 
+          card.querySelector(".exp-card-list"), 
+        ],
+        { y: 30, opacity: 0 },
+        { 
+          y: 0, 
+          opacity: 1, 
+          duration: 0.8, 
+          stagger: 0.15, 
+          ease: "power2.out" 
+        }
+      );
     });
+
   }, { scope: containerRef }); 
 
   return (
@@ -53,12 +55,10 @@ const Experience = () => {
         <div className="mt-32 relative projects-container">
           <div className="relative z-50 xl:space-y-32 space-y-10">
             {expCards.map((card, index) => (
-              <div key={index} className="exp-card-wrapper relative z-10 will-change-transform">
+              <div key={index} className="exp-card-wrapper relative z-10">
                 <div className="flex flex-col xl:flex-row items-start gap-10">
-                  
-                  {/* Right */}
                   <div className="xl:w-2/6 w-full shrink-0">
-                    <GlowCard>
+                    <GlowCard className="card-border">
                       <ProjectImage 
                         imgPath={card.imgPath} 
                         gifPath={card.gifPath} 
@@ -67,11 +67,10 @@ const Experience = () => {
                     </GlowCard>
                   </div>
 
-                  {/* Left / Text Side */}
                   <div className="xl:w-4/6 w-full flex flex-col justify-center pb-10">
-                    
-                    <div className="expText flex xl:gap-8 gap-5 relative z-20">
-                      <div className="hidden sm:block shrink-0 mt-1">
+                    <div className="flex xl:gap-8 gap-5 relative z-20">
+                      {/* Logo (Hidden on smaller screens) */}
+                      <div className="exp-card-logo hidden sm:block shrink-0 mt-1">
                         <img 
                           src={card.logoPath} 
                           alt="logo" 
@@ -79,20 +78,21 @@ const Experience = () => {
                         />
                       </div>
                       
+                      {/* Text details */}
                       <div>
-                        <h1 className="font-semibold text-3xl text-white">{card.title}</h1>
-                        <p className="text-[#839CB5] italic mt-1 text-lg">
-                          {card.second_title || "About the Project"}
-                        </p>
+                        <div className="exp-card-title">
+                          <h1 className="font-semibold text-3xl text-white">{card.title}</h1>
+                          <p className="text-[#839CB5] italic mt-1 text-lg">{card.second_title || "About the Project"}</p>
+                        </div>
                         
-                        <ul className="list-disc ms-5 mt-6 flex flex-col gap-3 text-white-50">
+                        {/* Responsibilities list */}
+                        <ul className="exp-card-list list-disc ms-5 mt-6 flex flex-col gap-3 text-white-50">
                           {card.responsibilities.map((res, i) => (
                             <li key={i} className="text-lg leading-relaxed">{res}</li>
                           ))}
                         </ul>
                       </div>
                     </div>
-
                   </div>
                 </div>
               </div>
