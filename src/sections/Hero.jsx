@@ -1,10 +1,11 @@
-import { useState } from "react"; 
+import { useState, lazy, Suspense } from "react"; 
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import AnimatedCounter from "../components/AnimatedCounter";
 import Button from "../components/Button";
 import { words } from "../constants";
-import HeroExperience from "../components/models/hero_models/HeroExperience";
+
+const HeroExperience = lazy(() => import("../components/models/hero_models/HeroExperience"));
 
 const Hero = () => {
   const [lampActive, setLampActive] = useState(true);
@@ -19,8 +20,8 @@ const Hero = () => {
 
   return (
     <section id="hero" className="relative overflow-hidden">
-      <div className="absolute top-0 left-0 z-10">
-        <img src="/images/bg.png" alt="" />
+      <div className="absolute top-0 left-0 z-10 pointer-events-none">
+        <img src="/images/bg.png" alt="" loading="eager" />
       </div>
 
       <div className="hero-layout">
@@ -44,15 +45,9 @@ const Hero = () => {
               <h1>Through Hands-on Learning</h1>
             </div>
             <div className="text-white-50 md:text-xl relative z-10 pointer-events-none">
-              <p>
-                Hi, I’m Nir,
-              </p>
-              <p>
-                a Software Engineering student 
-              </p>
-              <p>
-                at Braude Academic College.
-              </p>
+              <p>Hi, I’m Nir,</p>
+              <p>a Software Engineering student</p>
+              <p>at Braude Academic College.</p>
             </div>
             
             <Button text="See My Work" className="md:w-80 md:h-16 w-60 h-12" id="counter" />
@@ -61,7 +56,9 @@ const Hero = () => {
 
         <figure>
           <div className="hero-3d-layout">
-            <HeroExperience lampActive={lampActive} setLampActive={setLampActive} />
+            <Suspense fallback={<div className="w-full h-full bg-transparent" />}>
+              <HeroExperience lampActive={lampActive} setLampActive={setLampActive} />
+            </Suspense>
           </div>
         </figure>
       </div>

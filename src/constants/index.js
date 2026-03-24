@@ -1,23 +1,10 @@
 const navLinks = [
-  {
-    name: "Work",
-    link: "#counter",
-  },
-  {
-    name: "Projects",
-    link: "#experience",
-  },
-  {
-    name: "Skills",
-    link: "#skills",
-  },
+  { name: "Work", link: "#counter" },
+  { name: "Projects", link: "#experience" },
+  { name: "Skills", link: "#skills" },
 ];
 
 const words = [
-  { text: "Learning", imgPath: "/images/ideas.svg" },
-  { text: "Designing", imgPath: "/images/pb.png" },
-  { text: "Building", imgPath: "/images/designs.svg" },
-  { text: "Coding", imgPath: "/images/code.svg" },
   { text: "Learning", imgPath: "/images/ideas.svg" },
   { text: "Designing", imgPath: "/images/pb.png" },
   { text: "Building", imgPath: "/images/designs.svg" },
