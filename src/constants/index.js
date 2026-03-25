@@ -50,7 +50,7 @@ const expCards = [
     imgPath: "/images/poke-dexo.png",
     gifPath: "/images/poke-dexo.gif",
     githubLink: "https://github.com/nirsegal26/poke-dexo",
-    logoPath: "/images/logo2.png",
+    logoPath: "/images/logo3.png",
     title: "PokéDexo",
     responsibilities: [
       "A dynamic and interactive web application that consumes a RESTful API to fetch and display detailed information.",
