@@ -64,6 +64,7 @@ const Contact = () => {
                     onChange={handleChange}
                     placeholder="What’s your name?"
                     required
+                    className="focus:ring-2 focus:ring-white-50 outline-none transition-all"
                   />
                 </div>
 
@@ -77,6 +78,7 @@ const Contact = () => {
                     onChange={handleChange}
                     placeholder="What’s your email address?"
                     required
+                    className="focus:ring-2 focus:ring-white-50 outline-none transition-all"
                   />
                 </div>
 
@@ -90,6 +92,7 @@ const Contact = () => {
                     placeholder="Your message here.."
                     rows="5"
                     required
+                    className="focus:ring-2 focus:ring-white-50 outline-none transition-all resize-none"
                   />
                 </div>
 
@@ -116,6 +119,6 @@ const Contact = () => {
       </div>
     </section>
   );
-};
+};                
 
 export default Contact;
