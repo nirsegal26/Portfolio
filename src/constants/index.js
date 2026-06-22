@@ -59,16 +59,16 @@ const expCards = [
     ],
   },
   {
-    second_title: "Automated Quiz Generation & Progress Tracking Platform",
+    second_title: "Gamified Task Management & Productivity Platform",
     imgPath: "/images/quizit.png",
     gifPath: "/images/quizit.gif",
-    githubLink: "https://github.com/nirsegal26/quiz-it",
+    githubLink: "https://github.com/nirsegal26/life-quest",
     logoPath: "/images/logo2.png",
-    title: "QuizIt App",
+    title: "Life Quest App",
     responsibilities: [
-      "Developing a full-stack web application using React and Node.js that dynamically generates multiple-choice quizzes from user-provided text files or specific topics.",
-      "Architecting a personalized learning dashboard to track user progress, calculate scores, and log mistakes for targeted review and improvement.",
-      "Currently focusing on building a robust backend architecture for data processing and designing an intuitive, interactive frontend experience."
+      "Developing a gamified productivity web application using React and Tailwind CSS that dynamically transforms daily to-do lists into interactive RPG encounters.",
+      "Architecting an optimized, visually rich user interface featuring custom sprite-sheet frame-slicing and lazy-loaded parallax environments using Intersection Observers to ensure seamless performance.",
+      "Currently focusing on building a robust state-machine for character animations and refining the interactive loot mechanics (XP and item drops) for an engaging user experience."
      ],
   },
 ];
